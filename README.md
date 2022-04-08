@@ -1,6 +1,6 @@
 # Telegram Bot Month. Lesson 1 Homework
 
-This is a lesson 1 homework. The bot greets you and sends you a simple quiz of three questions. 
+This is a lesson 1 homework. The bot greets you and sends a simple quiz of three questions. 
 
 ## To run
 
