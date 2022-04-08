@@ -18,7 +18,7 @@ def find_sum_components(input_list: list, sum_value: int):
     list_of_pairs = []
     for i in range(len(input_list)-1):
         if input_list[i] + input_list[i+1] == sum_value:
-            list_of_pairs.append([input_list[i], input_list[i+1]])
+            list_of_pairs.append([i, i+1])
     if list_of_pairs:
         for pair in list_of_pairs:
             print(pair)
