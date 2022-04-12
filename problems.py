@@ -24,10 +24,22 @@ def find_sum_components(input_list: list, sum_value: int):
             print(pair)
 
 
-if __name__ == "__main__":
-    print(list_adder(list1))
-    list_extender(list2)
-    print(list2)
+# Lesson 2 problem
+def count_steps(seats: list, students: list):
+    steps = 0
+    seats.sort()
+    students.sort()
+    for i, j in enumerate(seats):
+        steps += abs(j-students[i])
+    print(steps)
 
-    numbers = [2, 7, 11, 15, 1, 8]
-    find_sum_components(numbers, 9)
+
+if __name__ == "__main__":
+    # print(list_adder(list1))
+    # list_extender(list2)
+    # print(list2)
+    # numbers = [2, 7, 11, 15, 1, 8]
+    # find_sum_components(numbers, 9)
+    seats = [3, 1, 5]
+    students = [2, 7, 4]
+    count_steps(seats, students)
