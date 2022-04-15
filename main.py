@@ -1,6 +1,4 @@
-from aiogram import types
 from aiogram.utils import executor
-from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton, ParseMode
 from config import bot, dp
 from handlers import client, callback, extra, fsmadmin
 
