@@ -2,8 +2,10 @@ from aiogram import types
 from aiogram.utils import executor
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton, ParseMode
 from config import bot, dp
-from handlers import client, callback, extra
+from handlers import client, callback, extra, fsmadmin
 
+
+fsmadmin.register_handler_admin(dp)
 client.register_handlers_client(dp)
 callback.register_handlers_client(dp)
 extra.register_handlers_other(dp)
