@@ -1,4 +1,4 @@
-real_id is 1186587467, and user entered user_id as 1212
-real_username is None, and user entered username as johndoe
-real_first_name is Nuradil, and user entered first_name as John
-real_last_name is Baidoletov, and user entered last_name as Doe
+real_id is 1186587467, and user entered user_id as 1234
+real_username is None, and user entered username as New
+real_first_name is Nuradil, and user entered first_name as User
+real_last_name is Baidoletov, and user entered last_name as User
