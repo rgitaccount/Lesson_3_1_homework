@@ -1,6 +1,6 @@
-# Telegram Bot Month. Lesson 1 Homework
+# Telegram Bot Month.
 
-This is a lesson 1 homework. The bot greets you and sends a simple quiz of three questions. 
+This is a telegram bot homework git. The bot greets you and sends a simple quiz of three questions. 
 
 ## To run
 

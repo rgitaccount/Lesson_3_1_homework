@@ -3,8 +3,8 @@ from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode,
 
 from database import bot_db
 from keyboards import client_kb
-
 from config import bot, dp
+from webparser import scraper
 
 
 async def hello(message: types.Message):
@@ -27,8 +27,19 @@ async def get_all_users(message: types.Message):
     await bot_db.sql_select(message)
 
 
+async def parse_tender_lots(message: types.Message):
+    data = scraper.scraper_script()
+    for lot in data:
+        await bot.send_photo(message.chat.id,
+                             photo=lot['image'],
+                             caption=f"Deadline: {lot['deadline']}\n"
+                                     f"{lot['header']}\n"
+                                     f"{lot['link']}")
+
+
 def register_handlers_client(dp: Dispatcher):
     dp.register_message_handler(hello, commands=['start'])
     dp.register_message_handler(quiz, commands=['quiz'])
     dp.register_message_handler(help, commands=['help'])
     dp.register_message_handler(get_all_users, commands=['users'])
+    dp.register_message_handler(parse_tender_lots, commands=['tenders'])
