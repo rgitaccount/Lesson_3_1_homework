@@ -1,7 +1,7 @@
 from aiogram.utils import executor
 from config import bot, dp, URL
 from handlers import client, callback, extra, fsmadmin, notification
-from database import bot_db
+from database import bot_db, psql_db
 import asyncio
 from decouple import config
 
@@ -18,6 +18,7 @@ homework>heroku ps -a homework-month3-tbot
 async def on_startup(_):
     await bot.set_webhook(URL)
     bot_db.sql_create()
+    psql_db.psql_create()
     asyncio.create_task(notification.scheduler())
     print("Bot db is online")
 
