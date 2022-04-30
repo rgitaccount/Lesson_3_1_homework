@@ -4,6 +4,15 @@ from handlers import client, callback, extra, fsmadmin, notification
 from database import bot_db
 import asyncio
 
+"""
+heroku ps:scale worker=1
+heroku ps:scale worker=0
+
+heroku logs --tail --app (app name)
+homework>heroku ps -a homework-month3-tbot
+
+"""
+
 
 async def on_startup(_):
     bot_db.sql_create()

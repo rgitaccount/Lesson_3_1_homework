@@ -14,7 +14,11 @@ async def hello(message: types.Message):
 
 
 async def help(message: types.Message):
-    await message.reply("1. Type /start to see main menu")
+    await message.reply("1. Type /start to see main menu\n"
+                        "2. Type /poll to register new user\n"
+                        "3. Type /users to see all registered users\n"
+                        "4. Type /delete to delete some users\n"
+                        "5. Type /tenders to see latest entries to tenders.kg")
 
 
 async def quiz(message: types.Message):
