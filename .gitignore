@@ -6,3 +6,4 @@ __pycache__/
 *.py[cod]
 *.so
 helper.py
+hw_db.sqlite3

@@ -5,7 +5,8 @@ from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 from keyboards import admin_kb
 from config import bot
-from database import bot_db
+from database import psql_db
+
 
 
 class FSMAdmin(StatesGroup):
@@ -102,6 +103,22 @@ async def delete_data(message: types.Message):
                                ))
 
 
+async def registration(message: types.Message):
+    id = message.from_user.id
+    username = message.from_user.username
+    fullname = message.from_user.full_name
+    psql_db.cursor.execute(f'SELECT id from users WHERE id = {id}')
+    result = psql_db.cursor.fetchone()
+
+    if not result:
+        psql_db.cursor.execute(
+            "INSERT INTO users (id, username) VALUES (%s, %s)",
+            (id, username)
+        )
+        psql_db.cursor.commit()
+        await message.reply("Reg success")
+
+
 def register_handler_admin(dp: Dispatcher):
     dp.register_message_handler(start_poll, commands=['poll'])
     dp.register_message_handler(cancel_command, commands=['cancel'], state='*')
@@ -112,3 +129,4 @@ def register_handler_admin(dp: Dispatcher):
     dp.register_callback_query_handler(complete_delete,
                                        lambda call: call.data and call.data.startswith("delete"))
     dp.register_message_handler(delete_data, commands=['delete'])
+    dp.register_message_handler(registration, commands=['register'])
