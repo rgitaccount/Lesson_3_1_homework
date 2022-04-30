@@ -7,3 +7,4 @@ storage = MemoryStorage()
 TOKEN = config("TOKEN")
 bot = Bot(TOKEN)
 dp = Dispatcher(bot=bot, storage=storage)
+URL = "https://homework-month3-tbot.herokuapp.com/"
