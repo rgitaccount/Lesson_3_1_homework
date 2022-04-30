@@ -1,1 +1,1 @@
-web: python main.py
+webve: python main.py
