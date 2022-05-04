@@ -124,7 +124,7 @@ async def get_all_users(message: types.Message):
         await message.reply(
             f"ID: {row[0]}\n"
             f"Username: {row[1]}\n"
-            f"Fullname": {row[2]}
+            f"Fullname: {row[2]}"
         )
 
 
