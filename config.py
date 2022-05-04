@@ -8,4 +8,4 @@ TOKEN = config("TOKEN")
 bot = Bot(TOKEN)
 dp = Dispatcher(bot=bot, storage=storage)
 URL = "https://homework-month3-tbot.herokuapp.com/"
-URI = "postgres://mazfwpnlptqwgw:073ae7ac31da14324a4719714a5c682e68262f023c8a84d852a7578e814b0d5c@ec2-52-5-110-35.compute-1.amazonaws.com:5432/d1pl2cev7m7adg"
+URI = "postgres://ovpuzynzdobyzd:16b7d5aad6415d6f44201d853c18bbb3dbd3dace96cc46743b924757012e4240@ec2-52-5-110-35.compute-1.amazonaws.com:5432/d3hm5smerkaq3b"

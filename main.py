@@ -17,8 +17,8 @@ homework>heroku ps -a homework-month3-tbot
 
 async def on_startup(_):
     await bot.set_webhook(URL)
-    bot_db.sql_create()
     psql_db.psql_create()
+    bot_db.sql_create()
     asyncio.create_task(notification.scheduler())
     print("Bot db is online")
 
