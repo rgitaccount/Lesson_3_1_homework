@@ -5,7 +5,7 @@ from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 from keyboards import admin_kb
 from config import bot
-from database import psql_db
+from database import psql_db, bot_db
 
 
 
@@ -107,16 +107,25 @@ async def registration(message: types.Message):
     id = message.from_user.id
     username = message.from_user.username
     fullname = message.from_user.full_name
-    psql_db.cursor.execute(f'SELECT id from users WHERE id = {id}')
-    result = psql_db.cursor.fetchone()
 
-    if not result:
-        psql_db.cursor.execute(
-            "INSERT INTO users (id, username) VALUES (%s, %s)",
-            (id, username)
+    psql_db.cursor.execute(
+        'INSERT INTO users (id, username, fullname) VALUES (%s, %s, %s)',
+        (id, username, fullname),
+    )
+    psql_db.db.commit()
+    await message.reply("Registration successful")
+
+
+async def get_all_users(message: types.Message):
+    all_users = psql_db.cursor.execute("SELECT * FROM users")
+    result = psql_db.cursor.fetchall()
+
+    for row in result:
+        await message.reply(
+            f"ID: {row[0]}\n"
+            f"Username: {row[1]}\n"
+            f"Fullname": {row[2]}
         )
-        psql_db.cursor.commit()
-        await message.reply("Reg success")
 
 
 def register_handler_admin(dp: Dispatcher):
@@ -130,3 +139,4 @@ def register_handler_admin(dp: Dispatcher):
                                        lambda call: call.data and call.data.startswith("delete"))
     dp.register_message_handler(delete_data, commands=['delete'])
     dp.register_message_handler(registration, commands=['register'])
+    dp.register_message_handler(get_all_users, commands=['get'])
